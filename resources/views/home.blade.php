@@ -22,7 +22,7 @@
                                 @forelse ($habits as $key => $habit)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $habit->name }}</td>
+                                        <th>{{ $habit->name }}</th>
                                         <td>{{ $habit->num_hours }}</td>
                                         <td>
                                             <form action="{{ route('habits.index') }}" method="post">
@@ -30,15 +30,12 @@
                                                 @csrf
                                             </form>
                                             
-                                            <form action="{{ route('habits.index') }}" method="post">
-                                                <button type="submit" class="btn btn-secondary">+1</button>
-                                                @csrf
-                                            </form>
-                                            
                                         </td>
                                     </tr>
                                 @empty
-                                    <p class="text">No Habit Found.</p>
+                                    <tr>
+                                        <td colspan="4" class="text">No Habit Found. Add new to track your habits.</td>
+                                    </tr>
                                 @endforelse
                             </ul>
                         </tbody>
